@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
         
         if (accessToken && refreshToken) {
           // Verify session with backend
-          const response = await fetch(`http://localhost:3000/api/v1/auth/verify-session`, {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify-session`, {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${accessToken}`,
@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }) => {
       setSessionLoading(true);
       
       // Use backend API for login
-      const response = await fetch(`http://localhost:3000/api/v1/auth/login`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ export const AuthProvider = ({ children }) => {
       setSessionLoading(true);
 
       // Use backend API for registration
-      const response = await fetch(`http://localhost:3000/api/v1/auth/register`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ export const AuthProvider = ({ children }) => {
       
       if (accessToken) {
         // Call backend logout endpoint
-        await fetch(`http://localhost:3000/api/v1/auth/logout`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${accessToken}`,

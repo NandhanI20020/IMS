@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 class ApiClient {
   constructor() {
-    this.baseURL = API_URL || 'http://localhost:3001/api/v1';
+    this.baseURL = API_URL || 'http://localhost:3000/api/v1';
     console.log('API Client initialized with baseURL:', this.baseURL);
     this.requestQueue = [];
     this.isProcessing = false;
