@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(psql:*)",
+      "Bash(node:*)",
+      "Bash(npm start)",
+      "Bash(set PORT=5000)"
+    ],
+    "deny": []
+  }
+}
