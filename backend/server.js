@@ -72,6 +72,8 @@ app.use('/api', limiter);
 // CORS
 const allowedOrigins = config.cors.origins || [
   'https://ims-git-main-nandhan-venkadesh-as-projects.vercel.app',
+  'https://ims-jii8j45g3-nandhan-venkadesh-as-projects.vercel.app',
+  'https://ims-ruby.vercel.app',
   'http://localhost:3001'
 ];
 const corsOptionsDelegate = (req, callback) => {
