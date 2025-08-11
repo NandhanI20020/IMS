@@ -25,7 +25,7 @@ const config = {
 
   // CORS configuration
   cors: {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3001',
+    origins: (process.env.CORS_ORIGIN || 'http://localhost:3001').split(',').map(s => s.trim()),
     credentials: true
   },
 

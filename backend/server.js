@@ -70,7 +70,7 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 // CORS
-const allowedOrigins = [
+const allowedOrigins = config.cors.origins || [
   'https://ims-git-main-nandhan-venkadesh-as-projects.vercel.app',
   'http://localhost:3001'
 ];
@@ -85,7 +85,16 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 // Explicitly handle preflight
-app.options('*', cors());
+app.options('*', cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+}));
 
 // Compression
 app.use(compression());
